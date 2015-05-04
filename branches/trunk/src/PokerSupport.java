@@ -1,15 +1,15 @@
 import java.nio.file.Paths;
 
-import javafx.scene.shape.Path;
+//import javafx.scene.shape.Path;
 
 
 
 public class PokerSupport {
-	private PokerDataBase dataBase;
+	private PokerDataBase db;
 	private FileReader fileReader;
 	
 	public PokerDataBase getDataBase() {
-		return PokerDataBase.getInstance();
+		return db.getInstance();
 	}
 	
 	public FileReader getFileReader() {
@@ -17,7 +17,7 @@ public class PokerSupport {
 	}
 	
 	public PokerSupport() {
-		dataBase = PokerDataBase.getInstance();
+		db = PokerDataBase.getInstance();
 		fileReader = FileReader.getInstance();
 	}
 
@@ -26,5 +26,10 @@ public class PokerSupport {
 		PokerSupport poker = new PokerSupport();
 		poker.getFileReader().setPathToFolder(Paths.get("C:\\Users\\adam\\Documents\\HandHistory\\Bcl333"));
 		poker.getFileReader().findSummmaryFiles();
+		
+		poker.db = new PokerDataBase();
+		
+		poker.db.connectToDatabase();
+		
 	}
 }
